@@ -1,0 +1,31 @@
+name: run java git diff
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: set up jdk11
+        uses: actions/stepup-java@v2
+        with:
+          distribution: 'temurin'
+          java-version: 11
+
+      - name: run java code
+        run: |
+          cd deepseek-code-review-sdk/src/main/java
+          javac com/bugstack/middleware/sdk/DeepSeekCodeReview.java
+          java com.bugstack.middleware.sdk.DeepSeekCodeReview

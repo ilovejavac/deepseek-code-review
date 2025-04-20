@@ -30,6 +30,4 @@ jobs:
 
       - name: Run Code Review
 #        run: java -jar ./libs/deepseek-code-review-sdk-1.0.jar
-        run: ls
-          pwd
-          java -jar deepseek-code-review-sdk/target/deepseek-code-review-sdk-1.0.jar
+        run: java -jar deepseek-code-review-sdk/target/deepseek-code-review-sdk-1.0.jar

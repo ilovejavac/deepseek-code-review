@@ -1,0 +1,31 @@
+name: maven-jar.yaml
+on:
+  push:
+    - *
+  pull_request:
+    - *
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 2
+
+      - name: setup up jdk11
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '11'
+
+      - name: build with maven
+        run: mvn clean install
+
+      - name: copy jar
+        run: mvn dependency:copy -Dartifact=com.bugstack:deepseek-code-review:1.0 -DoutputDirdectory=./libs
+
+      - name: run code review
+        run: java -jar ./libs/deepseek-code-review-sdk-1.0.jar

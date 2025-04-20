@@ -23,10 +23,13 @@ jobs:
           java-version: '11'
 
       - name: Build with Maven
-        run: mvn clean install
+        run: mvn clean package
 
-      - name: Copy Jar
-        run: mvn dependency:copy -Dartifact=com.bugstack:deepseek-code-review-sdk:1.0 -DoutputDirectory=./libs
+#      - name: Copy Jar
+#        run: mvn dependency:copy -Dartifact=com.bugstack:deepseek-code-review-sdk:1.0 -DoutputDirectory=./libs
 
       - name: Run Code Review
-        run: java -jar ./libs/deepseek-code-review-sdk-1.0.jar
+#        run: java -jar ./libs/deepseek-code-review-sdk-1.0.jar
+        run: ls
+          pwd
+          java -jar deepseek-code-review-sdk/target/deepseek-code-review-sdk-1.0.jar

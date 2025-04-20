@@ -9,7 +9,7 @@ public class DeepSeekCodeReview {
     public static void main(String[] args) throws Exception {
         System.out.println("run code review-test");
 
-        ProcessBuilder processBuilder = new ProcessBuilder("git", "diff", "HEAD-1", "HEAD");
+        ProcessBuilder processBuilder = new ProcessBuilder("git", "diff", "HEAD~1", "HEAD");
         processBuilder.directory(new File("."));
 
         Process process = processBuilder.start();

@@ -3,10 +3,10 @@ name: run java git diff
 on:
   push:
     branches:
-      - main
+      - main-close
   pull_request:
     branches:
-      - main
+      - main-close
 
 jobs:
   build-and-run:

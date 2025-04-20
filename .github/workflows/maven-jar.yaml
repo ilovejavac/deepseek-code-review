@@ -26,7 +26,7 @@ jobs:
         run: mvn clean install
 
       - name: Copy Jar
-        run: mvn dependency:copy -Dartifact=com.bugstack:deepseek-code-review:1.0 -DoutputDirectory=./libs
+        run: mvn dependency:copy -Dartifact=com.bugstack:deepseek-code-review-sdk:1.0 -DoutputDirectory=./libs
 
       - name: Run Code Review
         run: java -jar ./libs/deepseek-code-review-sdk-1.0.jar

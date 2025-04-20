@@ -1,9 +1,9 @@
 name: maven-jar.yaml
 on:
   push:
-    - *
+    - main
   pull_request:
-    - *
+    - main
 
 jobs:
   build:

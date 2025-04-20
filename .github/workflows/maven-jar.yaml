@@ -8,24 +8,20 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: checkout repository
-        uses: actions/checkout@v2
-        with:
-          fetch-depth: 2
+      - uses: actions/checkout@v4  # 建议升级到最新版
 
-      - name: setup up jdk11
+      - name: Setup JDK 11
         uses: actions/setup-java@v2
         with:
-          distribution: 'adopt'
+          distribution: 'temurin'
           java-version: '11'
 
-      - name: build with maven
+      - name: Build with Maven
         run: mvn clean install
 
-      - name: copy jar
-        run: mvn dependency:copy -Dartifact=com.bugstack:deepseek-code-review:1.0 -DoutputDirdectory=./libs
+      - name: Copy Jar
+        run: mvn dependency:copy -Dartifact=com.bugstack:deepseek-code-review:1.0 -DoutputDirectory=./libs
 
-      - name: run code review
+      - name: Run Code Review
         run: java -jar ./libs/deepseek-code-review-sdk-1.0.jar
